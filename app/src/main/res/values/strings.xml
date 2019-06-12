@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">bottomsheetonfragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_choose">Anda Memilih %1$s</string>
+    <string name="btn_close">Tutup</string>
+</resources>
