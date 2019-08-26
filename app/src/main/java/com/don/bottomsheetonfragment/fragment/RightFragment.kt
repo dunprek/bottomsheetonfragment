@@ -3,23 +3,23 @@ package com.don.bottomsheetonfragment.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialog
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.don.bottomsheetonfragment.MainAdapter
-import com.don.bottomsheetonfragment.MdlExample
 import com.don.bottomsheetonfragment.R
-import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
+import com.don.bottomsheetonfragment.mdl.ItemsItem
 import kotlinx.android.synthetic.main.fragment_right.*
 
 
-class RightFragment : Fragment(), MainAdapter.OnClickItem {
+@SuppressLint("ValidFragment")
+class RightFragment(items: List<ItemsItem>?) : Fragment(), MainAdapter.OnClickItem {
 
-    var dataList: MutableList<MdlExample> = mutableListOf()
+
+    var dataList: MutableList<ItemsItem> = items as MutableList<ItemsItem>
+
     lateinit var adapter: MainAdapter
 
 
@@ -35,8 +35,9 @@ class RightFragment : Fragment(), MainAdapter.OnClickItem {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataList.add(0, MdlExample(R.drawable.ic_mtrl_chip_checked_circle, "Benar"))
-        dataList.add(0, MdlExample(R.drawable.ic_mtrl_chip_close_circle, "Salah"))
+//        dataList.add(0, MdlExample(R.drawable.ic_mtrl_chip_checked_circle, "Benar"))
+//        dataList.add(0, MdlExample(R.drawable.ic_mtrl_chip_close_circle, "Salah"))
+
 
         val linearLayoutManager = LinearLayoutManager(context)
         rv_example.layoutManager = linearLayoutManager
@@ -48,14 +49,6 @@ class RightFragment : Fragment(), MainAdapter.OnClickItem {
 
 
     override fun onClickCard(position: Int) {
-//        Toast.makeText(activity, dataList[position].name, Toast.LENGTH_SHORT).show()
-
-        val dialog = BottomSheetDialog(this.activity!!)
-        val bottomSheet = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
-        bottomSheet.btn_dialog.setOnClickListener { dialog.dismiss() }
-        bottomSheet.tv_dialog.text =
-                String.format(resources.getString(R.string.label_choose), dataList[position].name)
-        dialog.setContentView(bottomSheet)
-        dialog.show()
+//
     }
 }

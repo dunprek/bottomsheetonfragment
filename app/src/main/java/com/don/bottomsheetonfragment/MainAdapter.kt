@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.don.bottomsheetonfragment.mdl.ItemsItem
 
 /**
  * Created by gideon on 12,June,2019
@@ -16,20 +17,18 @@ import android.widget.TextView
  */
 
 class MainAdapter(val context: Context,
-                          private val data: List<MdlExample>,
+                          private val data: List<ItemsItem>,
                           val onClickItem: OnClickItem) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        var ivEx: ImageView
         var tvEx: TextView
         var llEx: LinearLayout
 
         init {
             itemView.setTag(adapterPosition)
-            ivEx = itemView.findViewById(R.id.iv_example)
             tvEx = itemView.findViewById(R.id.tv_example)
             llEx = itemView.findViewById(R.id.ll_example)
 
@@ -42,11 +41,11 @@ class MainAdapter(val context: Context,
     }
 
     override fun onBindViewHolder(holder: MainAdapter.ViewHolder, position: Int) {
-        val result: MdlExample = data.get(position)
+        val result: ItemsItem = data.get(position)
 
-        holder.ivEx.setImageResource(result.image)
+//        holder.ivEx.setImageResource(result.image)
 
-        holder.tvEx.text = result.name
+        holder.tvEx.text = result.link
 
         holder.llEx.setOnClickListener {
             onClickItem.onClickCard(position)
